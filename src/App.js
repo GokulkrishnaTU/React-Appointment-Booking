@@ -15,6 +15,8 @@ const Container = styled.div`
 
 const Title = styled.h1`
   margin-bottom: 20px;
+  margin: 0;
+  padding-top: 50px;
 `;
 
 const TimeSlotsContainer = styled.div`
@@ -125,6 +127,21 @@ const Scheduler = () => {
 
   const handlePopupSubmit = (e) => {
     e.preventDefault();
+
+
+      // Validate start time and end time
+  const startHour = parseInt(startTime, 10);
+  const endHour = parseInt(endTime, 10);
+
+  if (startHour < 10 || startHour > 16) {
+    alert('Start time must be between 10 and 4 PM');
+    return;
+  }
+
+  if (endHour < 10 || endHour > 16) {
+    alert('End time must be between 10 and 4 PM');
+    return;
+  }
 
     // Create a new appointment object
     const newAppointment = {
